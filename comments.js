@@ -1,18 +1,11 @@
-// Importation du module Express
-const express = require('express');
+const http = require('http');
 
-// Création d'une nouvelle application Express
-const app = express();
-
-// Définition du port
-const port = 3000;
-
-// Configuration de la route d'accueil
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello, World!');
 });
 
-// Démarrage du serveur
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+server.listen(3000, 'localhost', () => {
+    console.log('Server running at http://localhost:3000/');
 });
